@@ -449,6 +449,7 @@ DEFAULT_DATA = {
     "spontaneous_enabled": True,
     "spontaneous_hours": 3,
     "reactions_enabled": True,
+    "ghostping_channel_id": None,
     "start_date": None,            # "AAAA-MM-JJ" : votre date de rencontre
     "happiness": 0,
     "unlocked": [],
@@ -562,6 +563,7 @@ def goodnight_time_obj():
 # ==================================================================
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True  # nécessaire pour on_member_join (à cocher dans le portail Discord)
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 
@@ -640,6 +642,22 @@ async def on_ready():
     reconfigure_spontaneous()
     if data.get("spontaneous_enabled", True) and not spontaneous_message.is_running():
         spontaneous_message.start()
+
+# ------------------- GHOST PING À L'ARRIVÉE -------------------
+@bot.event
+async def on_member_join(member):
+    cid = data.get("ghostping_channel_id")
+    if not cid:
+        return
+    channel = bot.get_channel(cid)
+    if not channel:
+        return
+    try:
+        ping = await channel.send(member.mention)
+        await ping.delete()  # supprimé aussitôt : la notif reste, le message disparaît
+    except Exception as e:
+        print("⚠️ ghostping:", e)
+
 
 # ------------------- RÉACTIONS AUX MOTS-CLÉS -------------------
 def _has_keyword(content, kw):
@@ -1348,6 +1366,33 @@ class ConfigView(discord.ui.View):
                 await self.message.edit(view=None)
             except Exception:
                 pass
+
+
+@bot.command(name="ghostping")
+async def ghostping_cmd(ctx, *, arg: str = ""):
+    if not is_admin(ctx.author.id):
+        await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
+        return
+    if arg.strip().lower() in ("off", "none", "désactiver", "disable", "stop"):
+        data["ghostping_channel_id"] = None
+        save_data()
+        await ctx.send("👻 Ghost ping désactivé.")
+        return
+    if ctx.message.channel_mentions:
+        ch = ctx.message.channel_mentions[0]
+        data["ghostping_channel_id"] = ch.id
+        save_data()
+        await ctx.send(
+            f"👻 Ghost ping activé : chaque nouvel arrivant sera pingué dans {ch.mention}, "
+            "puis le ping sera supprimé aussitôt.\n`!ghostping off` pour désactiver.")
+        return
+    cid = data.get("ghostping_channel_id")
+    if cid:
+        await ctx.send(f"👻 Salon actuel : <#{cid}>\n"
+                       "• `!ghostping #salon` pour changer\n"
+                       "• `!ghostping off` pour désactiver")
+    else:
+        await ctx.send("👻 Aucun salon configuré.\nUtilise `!ghostping #salon` pour en définir un.")
 
 
 @bot.command(name="config")
