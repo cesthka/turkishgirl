@@ -327,6 +327,8 @@ HELP = {
         "overview_label": "Overview",
         "placeholder": "Browse a category...",
         "footer": "Use the menu to navigate 🐾",
+        "categories_header": "Categories",
+        "prefix_line": "Prefix: !",
         "categories": [
             {"id": "cuddles", "emoji": "🤗", "label": "Cuddles", "title": "🤗 Cuddles",
              "desc": "hugs, kisses & more", "lines": [
@@ -363,6 +365,8 @@ HELP = {
         "overview_label": "Accueil",
         "placeholder": "Parcourir une catégorie...",
         "footer": "Utilise le menu pour naviguer 🐾",
+        "categories_header": "Catégories",
+        "prefix_line": "Préfixe : !",
         "categories": [
             {"id": "cuddles", "emoji": "🤗", "label": "Câlins", "title": "🤗 Câlins",
              "desc": "câlins, bisous & plus", "lines": [
@@ -399,6 +403,8 @@ HELP = {
         "overview_label": "Genel",
         "placeholder": "Bir kategoriye göz at...",
         "footer": "Gezinmek için menüyü kullan 🐾",
+        "categories_header": "Kategoriler",
+        "prefix_line": "Önek: !",
         "categories": [
             {"id": "cuddles", "emoji": "🤗", "label": "Sevgi", "title": "🤗 Sevgi",
              "desc": "sarılmalar, öpücükler & dahası", "lines": [
@@ -428,6 +434,243 @@ HELP = {
                 "`!config` — ayar paneli (owner/admins) 🔧",
              ]},
         ],
+    },
+}
+
+
+# ==================================================================
+#  UI : textes d'interface (config, fenêtres, assistant, ghostping...)
+#  -> localisés par utilisateur, comme la "voix" de Pamuk
+# ==================================================================
+UI = {
+    "fr": {
+        "no_perm_cmd": "⛔ Tu n'as pas la permission d'utiliser cette commande.",
+        "no_perm_menu": "⛔ Tu n'as pas la permission d'utiliser ce menu.",
+        "no_perm": "⛔ Tu n'as pas la permission.",
+        "owner_only": "⛔ Réservé à l'owner.",
+        "close": "Fermer",
+        "yes_word": "oui", "no_word": "non",
+        "state_on": "activé", "state_off": "désactivé",
+        # config
+        "cfg_title": "🐱 Pamuk — Configuration",
+        "cfg_overview_desc": "Choisis une catégorie dans le menu ci-dessous.",
+        "cfg_cat_desc": "Choisis un réglage à modifier dans le 2ᵉ menu ci-dessous.",
+        "cfg_cat_title": "{emoji} Configuration — {label}",
+        "cfg_footer": "Owner & admins uniquement",
+        "cfg_overview_label": "Vue d'ensemble",
+        "cfg_cat_placeholder": "Catégorie de réglages...",
+        "cfg_item_placeholder": "Choisis un réglage à modifier...",
+        "choose_language": "Choisis une langue :",
+        "choose_channel": "Choisis un salon :",
+        "cat_messages": "Messages", "cat_messages_desc": "matin, soir, spontanés, réactions",
+        "cat_perso": "Personnalisation", "cat_perso_desc": "surnom, langue, salon, fuseau, avatar",
+        "cat_couple": "Couple", "cat_couple_desc": "date de rencontre, compliments",
+        "cat_admin": "Admin", "cat_admin_desc": "gérer les admins",
+        "item_name": "Surnom", "item_language": "Langue par défaut", "item_channel": "Salon",
+        "item_timezone": "Fuseau horaire", "item_avatar": "Avatar (image)",
+        "item_morning": "Heure du bonjour", "item_goodnight": "Message du soir",
+        "item_spontaneous": "Messages spontanés", "item_reactions": "Réactions mots-clés",
+        "item_start_date": "Date de rencontre", "item_compliments": "Compliments cachés",
+        "item_admins": "Gérer les admins",
+        "val_not_set": "❌ non défini", "val_defined": "✅ défini", "val_dash": "—",
+        "val_every_hours": "(toutes les {h}h)", "val_days_suffix": " ({d} j)",
+        "val_messages_count": "{n} messages",
+        # modals
+        "m_name_title": "Surnom de Pamuk", "m_name_label": "Comment Pamuk l'appelle",
+        "m_name_ok": "✅ Surnom : **{v}**",
+        "m_avatar_title": "Avatar de Pamuk", "m_avatar_label": "URL de l'image (vide pour retirer)",
+        "m_avatar_err": "❌ L'URL doit commencer par http(s)://",
+        "m_avatar_ok": "✅ Avatar mis à jour 🖼️", "m_avatar_removed": "✅ Avatar retiré",
+        "m_tz_title": "Fuseau horaire", "m_tz_label": "Ex : Europe/Istanbul",
+        "m_tz_err": "❌ Fuseau inconnu. Ex : Europe/Istanbul", "m_tz_ok": "✅ Fuseau : **{v}**",
+        "m_morning_title": "Heure du bonjour", "m_time_label": "Heure (HH:MM, 24h)",
+        "m_time_err": "❌ Format : HH:MM (ex : 08:30)", "m_morning_ok": "✅ Bonjour à **{t}**",
+        "m_gn_title": "Message du soir", "m_time_label2": "Heure (HH:MM)",
+        "m_time_err2": "❌ Format heure : HH:MM", "m_gn_ok": "✅ Bonne nuit : {state} à {t}",
+        "m_sp_title": "Messages spontanés", "m_sp_hours_label": "Toutes les combien d'heures ?",
+        "m_sp_hours_err": "❌ Le nombre d'heures doit être un entier.",
+        "m_sp_ok": "✅ Spontanés : {state}, toutes les {h}h",
+        "enabled_q": "Activé ? ({yes} / {no})",
+        "m_rc_title": "Réactions aux mots-clés", "m_rc_ok": "✅ Réactions : {state}",
+        "m_sd_title": "Date de rencontre", "m_sd_label": "Date (AAAA-MM-JJ), vide pour effacer",
+        "m_sd_err": "❌ Format : AAAA-MM-JJ (ex : 2023-05-14)", "m_sd_ok": "✅ Date enregistrée 💕",
+        "m_cp_title": "Compliments cachés", "m_cp_label": "Débloqué à {n} ❤️",
+        "m_cp_ok": "✅ Compliments enregistrés 💝",
+        "m_ad_title": "Gérer les admins", "m_ad_add_label": "Ajouter des IDs (virgules)",
+        "m_ad_remove_label": "Retirer des IDs (virgules)", "m_ad_ok": "✅ Admins mis à jour 👤",
+        "lang_default_ok": "✅ Langue par défaut : **{v}**",
+        "channel_ok": "✅ Salon : <#{id}>",
+        "channel_placeholder": "Choisis le salon où Pamuk parle",
+        # intro
+        "intro_send_title": "🐱 Envoyer l'intro de Pamuk",
+        "intro_step1": "Étape 1 sur 2 — choisis la langue dans le menu ci-dessous.",
+        "intro_lang_placeholder": "Étape 1 — choisis la langue...",
+        "intro_both_desc": "Les deux langues",
+        "intro_where_title": "📢 Où envoyer l'intro ?",
+        "intro_where_desc": "Langue : **{lang}**\nÉtape 2 — choisis le salon dans le menu ci-dessous.",
+        "intro_chan_placeholder": "Étape 2 — choisis le salon...",
+        "intro_chan_notfound": "❌ Salon introuvable.",
+        "intro_forbidden": "❌ Je n'ai pas la permission d'écrire dans <#{id}>.",
+        "intro_error": "❌ Erreur : {e}",
+        "intro_sent_title": "✅ Intro envoyée !",
+        "intro_sent_desc": "L'intro (**{lang}**) a été postée dans <#{id}> 💛",
+        # ghostping
+        "gp_off": "👻 Ghost ping désactivé.",
+        "gp_on": "👻 Ghost ping activé : chaque nouvel arrivant sera pingué dans {ch}, "
+                 "puis le ping sera supprimé aussitôt.\n`!ghostping off` pour désactiver.",
+        "gp_status": "👻 Salon actuel : <#{id}>\n• `!ghostping #salon` pour changer\n"
+                     "• `!ghostping off` pour désactiver",
+        "gp_none": "👻 Aucun salon configuré.\nUtilise `!ghostping #salon` pour en définir un.",
+    },
+    "tr": {
+        "no_perm_cmd": "⛔ Bu komutu kullanma yetkin yok.",
+        "no_perm_menu": "⛔ Bu menüyü kullanma yetkin yok.",
+        "no_perm": "⛔ Yetkin yok.",
+        "owner_only": "⛔ Sadece owner.",
+        "close": "Kapat",
+        "yes_word": "evet", "no_word": "hayır",
+        "state_on": "açık", "state_off": "kapalı",
+        "cfg_title": "🐱 Pamuk — Ayarlar",
+        "cfg_overview_desc": "Aşağıdaki menüden bir kategori seç.",
+        "cfg_cat_desc": "Değiştirmek için 2. menüden bir ayar seç.",
+        "cfg_cat_title": "{emoji} Ayarlar — {label}",
+        "cfg_footer": "Sadece owner & adminler",
+        "cfg_overview_label": "Genel bakış",
+        "cfg_cat_placeholder": "Ayar kategorisi...",
+        "cfg_item_placeholder": "Değiştirilecek ayarı seç...",
+        "choose_language": "Bir dil seç:",
+        "choose_channel": "Bir kanal seç:",
+        "cat_messages": "Mesajlar", "cat_messages_desc": "sabah, akşam, spontane, tepkiler",
+        "cat_perso": "Kişiselleştirme", "cat_perso_desc": "takma ad, dil, kanal, saat dilimi, avatar",
+        "cat_couple": "Çift", "cat_couple_desc": "tanışma tarihi, iltifatlar",
+        "cat_admin": "Admin", "cat_admin_desc": "adminleri yönet",
+        "item_name": "Takma ad", "item_language": "Varsayılan dil", "item_channel": "Kanal",
+        "item_timezone": "Saat dilimi", "item_avatar": "Avatar (resim)",
+        "item_morning": "Günaydın saati", "item_goodnight": "Akşam mesajı",
+        "item_spontaneous": "Spontane mesajlar", "item_reactions": "Anahtar kelime tepkileri",
+        "item_start_date": "Tanışma tarihi", "item_compliments": "Gizli iltifatlar",
+        "item_admins": "Adminleri yönet",
+        "val_not_set": "❌ ayarlı değil", "val_defined": "✅ ayarlı", "val_dash": "—",
+        "val_every_hours": "({h} saatte bir)", "val_days_suffix": " ({d} gün)",
+        "val_messages_count": "{n} mesaj",
+        "m_name_title": "Pamuk'un takma adı", "m_name_label": "Pamuk ona nasıl seslensin",
+        "m_name_ok": "✅ Takma ad: **{v}**",
+        "m_avatar_title": "Pamuk'un avatarı", "m_avatar_label": "Resim URL'si (boş = kaldır)",
+        "m_avatar_err": "❌ URL http(s):// ile başlamalı",
+        "m_avatar_ok": "✅ Avatar güncellendi 🖼️", "m_avatar_removed": "✅ Avatar kaldırıldı",
+        "m_tz_title": "Saat dilimi", "m_tz_label": "Örn: Europe/Istanbul",
+        "m_tz_err": "❌ Bilinmeyen saat dilimi. Örn: Europe/Istanbul", "m_tz_ok": "✅ Saat dilimi: **{v}**",
+        "m_morning_title": "Günaydın saati", "m_time_label": "Saat (SS:DD, 24s)",
+        "m_time_err": "❌ Biçim: SS:DD (örn: 08:30)", "m_morning_ok": "✅ Günaydın: **{t}**",
+        "m_gn_title": "Akşam mesajı", "m_time_label2": "Saat (SS:DD)",
+        "m_time_err2": "❌ Saat biçimi: SS:DD", "m_gn_ok": "✅ İyi geceler: {state}, {t}",
+        "m_sp_title": "Spontane mesajlar", "m_sp_hours_label": "Kaç saatte bir?",
+        "m_sp_hours_err": "❌ Saat sayısı tam sayı olmalı.",
+        "m_sp_ok": "✅ Spontane: {state}, {h} saatte bir",
+        "enabled_q": "Açık mı? ({yes} / {no})",
+        "m_rc_title": "Anahtar kelime tepkileri", "m_rc_ok": "✅ Tepkiler: {state}",
+        "m_sd_title": "Tanışma tarihi", "m_sd_label": "Tarih (YYYY-AA-GG), silmek için boş",
+        "m_sd_err": "❌ Biçim: YYYY-AA-GG (örn: 2023-05-14)", "m_sd_ok": "✅ Tarih kaydedildi 💕",
+        "m_cp_title": "Gizli iltifatlar", "m_cp_label": "{n} ❤️'de açılır",
+        "m_cp_ok": "✅ İltifatlar kaydedildi 💝",
+        "m_ad_title": "Adminleri yönet", "m_ad_add_label": "ID ekle (virgülle)",
+        "m_ad_remove_label": "ID çıkar (virgülle)", "m_ad_ok": "✅ Adminler güncellendi 👤",
+        "lang_default_ok": "✅ Varsayılan dil: **{v}**",
+        "channel_ok": "✅ Kanal: <#{id}>",
+        "channel_placeholder": "Pamuk'un konuşacağı kanalı seç",
+        "intro_send_title": "🐱 Pamuk tanıtımını gönder",
+        "intro_step1": "2 adımdan 1 — aşağıdaki menüden dili seç.",
+        "intro_lang_placeholder": "1. adım — dili seç...",
+        "intro_both_desc": "İki dil",
+        "intro_where_title": "📢 Tanıtım nereye gönderilsin?",
+        "intro_where_desc": "Dil: **{lang}**\n2. adım — aşağıdaki menüden kanalı seç.",
+        "intro_chan_placeholder": "2. adım — kanalı seç...",
+        "intro_chan_notfound": "❌ Kanal bulunamadı.",
+        "intro_forbidden": "❌ <#{id}> kanalına yazma iznim yok.",
+        "intro_error": "❌ Hata: {e}",
+        "intro_sent_title": "✅ Tanıtım gönderildi!",
+        "intro_sent_desc": "Tanıtım (**{lang}**) <#{id}> kanalına gönderildi 💛",
+        "gp_off": "👻 Ghost ping kapatıldı.",
+        "gp_on": "👻 Ghost ping açıldı: her yeni gelen {ch} kanalında pinglenecek, "
+                 "ardından ping hemen silinecek.\nKapatmak için `!ghostping off`.",
+        "gp_status": "👻 Mevcut kanal: <#{id}>\n• değiştirmek için `!ghostping #kanal`\n"
+                     "• kapatmak için `!ghostping off`",
+        "gp_none": "👻 Ayarlı kanal yok.\nBir tane ayarlamak için `!ghostping #kanal` kullan.",
+    },
+    "en": {
+        "no_perm_cmd": "⛔ You don't have permission to use this command.",
+        "no_perm_menu": "⛔ You don't have permission to use this menu.",
+        "no_perm": "⛔ You don't have permission.",
+        "owner_only": "⛔ Owner only.",
+        "close": "Close",
+        "yes_word": "yes", "no_word": "no",
+        "state_on": "on", "state_off": "off",
+        "cfg_title": "🐱 Pamuk — Configuration",
+        "cfg_overview_desc": "Pick a category in the menu below.",
+        "cfg_cat_desc": "Pick a setting to edit in the 2nd menu below.",
+        "cfg_cat_title": "{emoji} Configuration — {label}",
+        "cfg_footer": "Owner & admins only",
+        "cfg_overview_label": "Overview",
+        "cfg_cat_placeholder": "Settings category...",
+        "cfg_item_placeholder": "Pick a setting to edit...",
+        "choose_language": "Pick a language:",
+        "choose_channel": "Pick a channel:",
+        "cat_messages": "Messages", "cat_messages_desc": "morning, night, spontaneous, reactions",
+        "cat_perso": "Personalization", "cat_perso_desc": "nickname, language, channel, timezone, avatar",
+        "cat_couple": "Couple", "cat_couple_desc": "anniversary date, compliments",
+        "cat_admin": "Admin", "cat_admin_desc": "manage admins",
+        "item_name": "Nickname", "item_language": "Default language", "item_channel": "Channel",
+        "item_timezone": "Timezone", "item_avatar": "Avatar (image)",
+        "item_morning": "Morning time", "item_goodnight": "Night message",
+        "item_spontaneous": "Spontaneous messages", "item_reactions": "Keyword reactions",
+        "item_start_date": "Anniversary date", "item_compliments": "Hidden compliments",
+        "item_admins": "Manage admins",
+        "val_not_set": "❌ not set", "val_defined": "✅ set", "val_dash": "—",
+        "val_every_hours": "(every {h}h)", "val_days_suffix": " ({d}d)",
+        "val_messages_count": "{n} messages",
+        "m_name_title": "Pamuk's nickname", "m_name_label": "How Pamuk calls her",
+        "m_name_ok": "✅ Nickname: **{v}**",
+        "m_avatar_title": "Pamuk's avatar", "m_avatar_label": "Image URL (empty to remove)",
+        "m_avatar_err": "❌ The URL must start with http(s)://",
+        "m_avatar_ok": "✅ Avatar updated 🖼️", "m_avatar_removed": "✅ Avatar removed",
+        "m_tz_title": "Timezone", "m_tz_label": "e.g. Europe/Istanbul",
+        "m_tz_err": "❌ Unknown timezone. e.g. Europe/Istanbul", "m_tz_ok": "✅ Timezone: **{v}**",
+        "m_morning_title": "Morning time", "m_time_label": "Time (HH:MM, 24h)",
+        "m_time_err": "❌ Format: HH:MM (e.g. 08:30)", "m_morning_ok": "✅ Morning at **{t}**",
+        "m_gn_title": "Night message", "m_time_label2": "Time (HH:MM)",
+        "m_time_err2": "❌ Time format: HH:MM", "m_gn_ok": "✅ Good night: {state} at {t}",
+        "m_sp_title": "Spontaneous messages", "m_sp_hours_label": "Every how many hours?",
+        "m_sp_hours_err": "❌ Hours must be a whole number.",
+        "m_sp_ok": "✅ Spontaneous: {state}, every {h}h",
+        "enabled_q": "Enabled? ({yes} / {no})",
+        "m_rc_title": "Keyword reactions", "m_rc_ok": "✅ Reactions: {state}",
+        "m_sd_title": "Anniversary date", "m_sd_label": "Date (YYYY-MM-DD), empty to clear",
+        "m_sd_err": "❌ Format: YYYY-MM-DD (e.g. 2023-05-14)", "m_sd_ok": "✅ Date saved 💕",
+        "m_cp_title": "Hidden compliments", "m_cp_label": "Unlocked at {n} ❤️",
+        "m_cp_ok": "✅ Compliments saved 💝",
+        "m_ad_title": "Manage admins", "m_ad_add_label": "Add IDs (comma-separated)",
+        "m_ad_remove_label": "Remove IDs (comma-separated)", "m_ad_ok": "✅ Admins updated 👤",
+        "lang_default_ok": "✅ Default language: **{v}**",
+        "channel_ok": "✅ Channel: <#{id}>",
+        "channel_placeholder": "Pick the channel where Pamuk talks",
+        "intro_send_title": "🐱 Send Pamuk's intro",
+        "intro_step1": "Step 1 of 2 — pick the language in the menu below.",
+        "intro_lang_placeholder": "Step 1 — pick the language...",
+        "intro_both_desc": "Both languages",
+        "intro_where_title": "📢 Where to send the intro?",
+        "intro_where_desc": "Language: **{lang}**\nStep 2 — pick the channel in the menu below.",
+        "intro_chan_placeholder": "Step 2 — pick the channel...",
+        "intro_chan_notfound": "❌ Channel not found.",
+        "intro_forbidden": "❌ I can't write in <#{id}>.",
+        "intro_error": "❌ Error: {e}",
+        "intro_sent_title": "✅ Intro sent!",
+        "intro_sent_desc": "The intro (**{lang}**) was posted in <#{id}> 💛",
+        "gp_off": "👻 Ghost ping disabled.",
+        "gp_on": "👻 Ghost ping enabled: every new member will be pinged in {ch}, "
+                 "then the ping is deleted instantly.\n`!ghostping off` to disable.",
+        "gp_status": "👻 Current channel: <#{id}>\n• `!ghostping #channel` to change\n"
+                     "• `!ghostping off` to disable",
+        "gp_none": "👻 No channel set.\nUse `!ghostping #channel` to set one.",
     },
 }
 
@@ -514,6 +757,24 @@ def set_user_language(uid, code):
 
 def m(key, uid=None):
     return MESSAGES[ulang(uid)][key]
+
+
+def tr_ui(key, L, **kw):
+    """Texte d'interface localisé. L = code langue ('fr'/'tr'/'en')."""
+    s = UI.get(L, UI["en"]).get(key) or UI["en"].get(key, key)
+    return s.format(**kw) if kw else s
+
+
+def ui(key, uid=None, **kw):
+    """Comme tr_ui mais à partir d'un user id (utilise sa langue perso)."""
+    return tr_ui(key, ulang(uid), **kw)
+
+
+_TRUTHY = {"oui", "o", "yes", "y", "on", "true", "1", "evet", "e", "açık", "aktif"}
+
+
+def is_yes(s):
+    return str(s).strip().lower() in _TRUTHY
 
 
 def fill(text):
@@ -846,12 +1107,11 @@ def build_help_embed(cat_id="overview", hlang=None):
                                       color=0xF7B5CA)
                 embed.set_footer(text=H["footer"])
                 return apply_thumb(embed)
-    # vue d'ensemble : toutes les catégories
+    # vue d'ensemble : UNIQUEMENT la liste des catégories (épuré)
     embed = discord.Embed(title=H["title"], description=H["desc"], color=0xF7B5CA)
-    for cat in H["categories"]:
-        embed.add_field(name=f"{cat['emoji']} {cat['label']}",
-                        value="\n".join(cat["lines"]), inline=False)
-    embed.set_footer(text=H["footer"])
+    cats = "\n".join(f"{cat['emoji']} {cat['label']}" for cat in H["categories"])
+    embed.add_field(name=H["categories_header"], value=cats, inline=False)
+    embed.set_footer(text=H["prefix_line"])
     return apply_thumb(embed)
 
 
@@ -951,40 +1211,41 @@ LANG_LABELS = {"both": "Français + Türkçe", "fr": "Français", "tr": "Türkç
 
 
 class IntroLanguageSelect(discord.ui.Select):
-    def __init__(self):
+    def __init__(self, vlang):
+        self.vlang = vlang
         options = [
             discord.SelectOption(label="Français + Türkçe", value="both", emoji="💞",
-                                 description="Les deux langues"),
+                                 description=tr_ui("intro_both_desc", vlang)),
             discord.SelectOption(label="Français", value="fr", emoji="🇫🇷"),
             discord.SelectOption(label="Türkçe", value="tr", emoji="🇹🇷"),
             discord.SelectOption(label="English", value="en", emoji="🇬🇧"),
         ]
-        super().__init__(placeholder="Étape 1 — choisis la langue...", options=options, row=0)
+        super().__init__(placeholder=tr_ui("intro_lang_placeholder", vlang), options=options, row=0)
 
     async def callback(self, interaction):
         choice = self.values[0]
-        view = IntroChannelView(choice)
+        view = IntroChannelView(choice, self.vlang)
         view.message = getattr(self.view, "message", None)
         embed = discord.Embed(
-            title="📢 Où envoyer l'intro ?",
-            description=f"Langue : **{LANG_LABELS[choice]}**\n"
-                        "Étape 2 — choisis le salon dans le menu ci-dessous.",
+            title=tr_ui("intro_where_title", self.vlang),
+            description=tr_ui("intro_where_desc", self.vlang, lang=LANG_LABELS[choice]),
             color=0xF7B5CA)
         await interaction.response.edit_message(embed=apply_thumb(embed), view=view)
 
 
 class IntroLanguageView(discord.ui.View):
-    def __init__(self, author_id):
+    def __init__(self, author_id, vlang):
         super().__init__(timeout=180)
         self.author_id = author_id
+        self.vlang = vlang
         self.message = None
-        self.add_item(IntroLanguageSelect())
-        self.add_item(CloseButton(label="Fermer", row=1))
+        self.add_item(IntroLanguageSelect(vlang))
+        self.add_item(CloseButton(label=tr_ui("close", vlang), row=1))
 
     async def interaction_check(self, interaction):
         if not is_admin(interaction.user.id):
             await interaction.response.send_message(
-                "⛔ Tu n'as pas la permission.", ephemeral=True)
+                ui("no_perm", interaction.user.id), ephemeral=True)
             return False
         return True
 
@@ -997,10 +1258,11 @@ class IntroLanguageView(discord.ui.View):
 
 
 class IntroChannelSelect(discord.ui.ChannelSelect):
-    def __init__(self, language):
+    def __init__(self, language, vlang):
         super().__init__(channel_types=[discord.ChannelType.text],
-                         placeholder="Étape 2 — choisis le salon...", row=0)
+                         placeholder=tr_ui("intro_chan_placeholder", vlang), row=0)
         self.language = language
+        self.vlang = vlang
 
     async def callback(self, interaction):
         picked = self.values[0]
@@ -1008,7 +1270,8 @@ class IntroChannelSelect(discord.ui.ChannelSelect):
         if channel is None and interaction.guild:
             channel = interaction.guild.get_channel(picked.id)
         if channel is None:
-            await interaction.response.send_message("❌ Salon introuvable.", ephemeral=True)
+            await interaction.response.send_message(
+                tr_ui("intro_chan_notfound", self.vlang), ephemeral=True)
             return
         try:
             if self.language == "both":
@@ -1017,42 +1280,46 @@ class IntroChannelSelect(discord.ui.ChannelSelect):
                 await channel.send(embed=build_intro_embed(self.language))
         except discord.Forbidden:
             await interaction.response.send_message(
-                f"❌ Je n'ai pas la permission d'écrire dans <#{picked.id}>.", ephemeral=True)
+                tr_ui("intro_forbidden", self.vlang, id=picked.id), ephemeral=True)
             return
         except Exception as e:
-            await interaction.response.send_message(f"❌ Erreur : {e}", ephemeral=True)
+            await interaction.response.send_message(
+                tr_ui("intro_error", self.vlang, e=e), ephemeral=True)
             return
         done = discord.Embed(
-            title="✅ Intro envoyée !",
-            description=f"L'intro (**{LANG_LABELS[self.language]}**) a été postée dans <#{picked.id}> 💛",
+            title=tr_ui("intro_sent_title", self.vlang),
+            description=tr_ui("intro_sent_desc", self.vlang,
+                              lang=LANG_LABELS[self.language], id=picked.id),
             color=0xF7B5CA)
         await interaction.response.edit_message(embed=apply_thumb(done), view=None)
 
 
 class IntroChannelView(discord.ui.View):
-    def __init__(self, language):
+    def __init__(self, language, vlang):
         super().__init__(timeout=180)
+        self.vlang = vlang
         self.message = None
-        self.add_item(IntroChannelSelect(language))
-        self.add_item(CloseButton(label="Fermer", row=1))
+        self.add_item(IntroChannelSelect(language, vlang))
+        self.add_item(CloseButton(label=tr_ui("close", vlang), row=1))
 
     async def interaction_check(self, interaction):
         if not is_admin(interaction.user.id):
             await interaction.response.send_message(
-                "⛔ Tu n'as pas la permission.", ephemeral=True)
+                ui("no_perm", interaction.user.id), ephemeral=True)
             return False
         return True
 
 
 @bot.command(name="intro")
 async def intro_cmd(ctx):
+    L = ulang(ctx.author.id)
     if not is_admin(ctx.author.id):
-        await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
+        await ctx.send(tr_ui("no_perm_cmd", L))
         return
-    view = IntroLanguageView(ctx.author.id)
+    view = IntroLanguageView(ctx.author.id, L)
     embed = discord.Embed(
-        title="🐱 Envoyer l'intro de Pamuk",
-        description="Étape 1 sur 2 — choisis la langue dans le menu ci-dessous.",
+        title=tr_ui("intro_send_title", L),
+        description=tr_ui("intro_step1", L),
         color=0xF7B5CA)
     msg = await ctx.send(embed=apply_thumb(embed), view=view)
     view.message = msg
@@ -1061,93 +1328,81 @@ async def intro_cmd(ctx):
 #  PANNEAU DE CONFIGURATION  (!config)
 # ==================================================================
 CONFIG_CATEGORIES = [
-    {"id": "messages", "emoji": "💬", "label": "Messages",
-     "desc": "matin, soir, spontanés, réactions",
-     "items": ["morning", "goodnight", "spontaneous", "reactions"]},
-    {"id": "perso", "emoji": "🎀", "label": "Personnalisation",
-     "desc": "surnom, langue, salon, fuseau, avatar",
-     "items": ["name", "language", "channel", "timezone", "avatar"]},
-    {"id": "couple", "emoji": "💕", "label": "Couple",
-     "desc": "date de rencontre, compliments",
-     "items": ["start_date", "compliments"]},
-    {"id": "admin", "emoji": "🔧", "label": "Admin",
-     "desc": "gérer les admins",
-     "items": ["admins"]},
+    {"id": "messages", "emoji": "💬", "items": ["morning", "goodnight", "spontaneous", "reactions"]},
+    {"id": "perso", "emoji": "🎀", "items": ["name", "language", "channel", "timezone", "avatar"]},
+    {"id": "couple", "emoji": "💕", "items": ["start_date", "compliments"]},
+    {"id": "admin", "emoji": "🔧", "items": ["admins"]},
 ]
 
-CONFIG_ITEM_META = {
-    "name":        ("Surnom", "🐱"),
-    "language":    ("Langue par défaut", "🌍"),
-    "channel":     ("Salon", "📢"),
-    "timezone":    ("Fuseau horaire", "🕒"),
-    "avatar":      ("Avatar (image)", "🖼️"),
-    "morning":     ("Heure du bonjour", "⏰"),
-    "goodnight":   ("Message du soir", "🌙"),
-    "spontaneous": ("Messages spontanés", "💬"),
-    "reactions":   ("Réactions mots-clés", "🫂"),
-    "start_date":  ("Date de rencontre", "💕"),
-    "compliments": ("Compliments cachés", "💝"),
-    "admins":      ("Gérer les admins", "👤"),
+CONFIG_ITEM_EMOJI = {
+    "name": "🐱", "language": "🌍", "channel": "📢", "timezone": "🕒", "avatar": "🖼️",
+    "morning": "⏰", "goodnight": "🌙", "spontaneous": "💬", "reactions": "🫂",
+    "start_date": "💕", "compliments": "💝", "admins": "👤",
 }
 
 
-def config_value(item_id):
+def config_value(item_id, L):
     if item_id == "name":
         return data["name"]
     if item_id == "language":
         return data["language"]
     if item_id == "channel":
-        return f"<#{data['channel_id']}>" if data.get("channel_id") else "❌ non défini"
+        return f"<#{data['channel_id']}>" if data.get("channel_id") else tr_ui("val_not_set", L)
     if item_id == "timezone":
         return data["timezone"]
     if item_id == "avatar":
-        return "✅ défini" if data.get("avatar_url") else "—"
+        return tr_ui("val_defined", L) if data.get("avatar_url") else tr_ui("val_dash", L)
     if item_id == "morning":
         return f"{data['morning_hour']:02d}:{data['morning_minute']:02d}"
     if item_id == "goodnight":
         return ("✅" if data["goodnight_enabled"] else "❌") + \
                f" {data['goodnight_hour']:02d}:{data['goodnight_minute']:02d}"
     if item_id == "spontaneous":
-        return ("✅" if data["spontaneous_enabled"] else "❌") + \
-               f" (toutes les {data['spontaneous_hours']}h)"
+        return ("✅" if data["spontaneous_enabled"] else "❌") + " " + \
+               tr_ui("val_every_hours", L, h=data["spontaneous_hours"])
     if item_id == "reactions":
         return "✅" if data["reactions_enabled"] else "❌"
     if item_id == "start_date":
-        sd = data.get("start_date") or "—"
+        sd = data.get("start_date") or tr_ui("val_dash", L)
         d = days_together()
-        return sd + (f" ({d} j)" if d is not None else "")
+        return sd + (tr_ui("val_days_suffix", L, d=d) if d is not None else "")
     if item_id == "compliments":
-        return f"{len(data.get('compliments', {}))} messages"
+        return tr_ui("val_messages_count", L, n=len(data.get("compliments", {})))
     if item_id == "admins":
-        return ", ".join(f"<@{a}>" for a in data.get("admins", [])) or "—"
-    return "—"
+        return ", ".join(f"<@{a}>" for a in data.get("admins", [])) or tr_ui("val_dash", L)
+    return tr_ui("val_dash", L)
 
 
-def build_config_embed(category="overview"):
+def item_label(item_id, L):
+    return tr_ui(f"item_{item_id}", L)
+
+
+def cat_label(cat_id, L):
+    return tr_ui(f"cat_{cat_id}", L)
+
+
+def build_config_embed(category, L):
     if category != "overview":
         cat = next((c for c in CONFIG_CATEGORIES if c["id"] == category), None)
         if cat:
             embed = discord.Embed(
-                title=f"{cat['emoji']} Configuration — {cat['label']}",
-                description="Choisis un réglage à modifier dans le 2ᵉ menu ci-dessous.",
-                color=0xF7B5CA)
+                title=tr_ui("cfg_cat_title", L, emoji=cat["emoji"], label=cat_label(cat["id"], L)),
+                description=tr_ui("cfg_cat_desc", L), color=0xF7B5CA)
             for item_id in cat["items"]:
-                label, emoji = CONFIG_ITEM_META[item_id]
-                embed.add_field(name=f"{emoji} {label}", value=config_value(item_id), inline=True)
-            embed.set_footer(text="Owner & admins uniquement")
+                embed.add_field(name=f"{CONFIG_ITEM_EMOJI[item_id]} {item_label(item_id, L)}",
+                                value=config_value(item_id, L), inline=True)
+            embed.set_footer(text=tr_ui("cfg_footer", L))
             return apply_thumb(embed)
-    # vue d'ensemble : toutes les catégories
-    embed = discord.Embed(
-        title="🐱 Pamuk — Configuration",
-        description="Choisis une catégorie dans le menu ci-dessous.",
-        color=0xF7B5CA)
+    embed = discord.Embed(title=tr_ui("cfg_title", L),
+                          description=tr_ui("cfg_overview_desc", L), color=0xF7B5CA)
     for cat in CONFIG_CATEGORIES:
         lines = []
         for item_id in cat["items"]:
-            label, emoji = CONFIG_ITEM_META[item_id]
-            lines.append(f"{emoji} {label} : **{config_value(item_id)}**")
-        embed.add_field(name=f"{cat['emoji']} {cat['label']}", value="\n".join(lines), inline=False)
-    embed.set_footer(text="Owner & admins uniquement")
+            lines.append(f"{CONFIG_ITEM_EMOJI[item_id]} {item_label(item_id, L)} : "
+                         f"**{config_value(item_id, L)}**")
+        embed.add_field(name=f"{cat['emoji']} {cat_label(cat['id'], L)}",
+                        value="\n".join(lines), inline=False)
+    embed.set_footer(text=tr_ui("cfg_footer", L))
     return apply_thumb(embed)
 
 
@@ -1156,24 +1411,26 @@ async def refresh(view):
     if not msg:
         return
     cat = getattr(view, "category", "overview")
-    new_view = ConfigView(getattr(view, "author_id", OWNER_ID), category=cat)
+    L = getattr(view, "vlang", lang())
+    new_view = ConfigView(getattr(view, "author_id", OWNER_ID), category=cat, vlang=L)
     new_view.message = msg
     try:
-        await msg.edit(embed=build_config_embed(cat), view=new_view)
+        await msg.edit(embed=build_config_embed(cat, L), view=new_view)
     except Exception as e:
         print("⚠️ refresh:", e)
 
 
 async def open_config_item(interaction, item_id, pv):
+    L = getattr(pv, "vlang", lang())
     if item_id == "name":
         await interaction.response.send_modal(NameModal(pv))
     elif item_id == "avatar":
         await interaction.response.send_modal(AvatarModal(pv))
     elif item_id == "language":
-        await interaction.response.send_message("Choisis une langue :",
+        await interaction.response.send_message(tr_ui("choose_language", L),
                                                 view=LanguageView(pv), ephemeral=True)
     elif item_id == "channel":
-        await interaction.response.send_message("Choisis un salon :",
+        await interaction.response.send_message(tr_ui("choose_channel", L),
                                                 view=ChannelView(pv), ephemeral=True)
     elif item_id == "morning":
         await interaction.response.send_modal(MorningModal(pv))
@@ -1191,17 +1448,19 @@ async def open_config_item(interaction, item_id, pv):
         await interaction.response.send_modal(ComplimentsModal(pv))
     elif item_id == "admins":
         if interaction.user.id != OWNER_ID:
-            await interaction.response.send_message("⛔ Réservé à l'owner.", ephemeral=True)
+            await interaction.response.send_message(ui("owner_only", interaction.user.id),
+                                                    ephemeral=True)
             return
         await interaction.response.send_modal(AdminsModal(pv))
 
 
 # ---------- MODALS ----------
-class NameModal(discord.ui.Modal, title="Surnom de Pamuk"):
+class NameModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
-        self.field = discord.ui.TextInput(label="Comment Pamuk l'appelle",
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_name_title", self.L))
+        self.field = discord.ui.TextInput(label=tr_ui("m_name_label", self.L),
                                           default=data["name"], max_length=50)
         self.add_item(self.field)
 
@@ -1209,15 +1468,17 @@ class NameModal(discord.ui.Modal, title="Surnom de Pamuk"):
         data["name"] = str(self.field.value).strip() or data["name"]
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message(f"✅ Surnom : **{data['name']}**", ephemeral=True)
+        await interaction.response.send_message(
+            tr_ui("m_name_ok", self.L, v=data["name"]), ephemeral=True)
 
 
-class AvatarModal(discord.ui.Modal, title="Avatar de Pamuk"):
+class AvatarModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_avatar_title", self.L))
         self.field = discord.ui.TextInput(
-            label="URL de l'image (vide pour retirer)",
+            label=tr_ui("m_avatar_label", self.L),
             placeholder="https://...png / .jpg / .gif",
             default=data.get("avatar_url", ""), required=False, max_length=400)
         self.add_item(self.field)
@@ -1225,21 +1486,21 @@ class AvatarModal(discord.ui.Modal, title="Avatar de Pamuk"):
     async def on_submit(self, interaction):
         url = str(self.field.value).strip()
         if url and not url.lower().startswith(("http://", "https://")):
-            await interaction.response.send_message(
-                "❌ L'URL doit commencer par http(s)://", ephemeral=True)
+            await interaction.response.send_message(tr_ui("m_avatar_err", self.L), ephemeral=True)
             return
         data["avatar_url"] = url
         save_data()
         await refresh(self.parent_view)
         await interaction.response.send_message(
-            "✅ Avatar mis à jour 🖼️" if url else "✅ Avatar retiré", ephemeral=True)
+            tr_ui("m_avatar_ok" if url else "m_avatar_removed", self.L), ephemeral=True)
 
 
-class TimezoneModal(discord.ui.Modal, title="Fuseau horaire"):
+class TimezoneModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
-        self.field = discord.ui.TextInput(label="Ex : Europe/Istanbul",
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_tz_title", self.L))
+        self.field = discord.ui.TextInput(label=tr_ui("m_tz_label", self.L),
                                           default=data["timezone"], max_length=64)
         self.add_item(self.field)
 
@@ -1248,23 +1509,23 @@ class TimezoneModal(discord.ui.Modal, title="Fuseau horaire"):
         try:
             ZoneInfo(tz)
         except Exception:
-            await interaction.response.send_message("❌ Fuseau inconnu. Ex : Europe/Istanbul",
-                                                    ephemeral=True)
+            await interaction.response.send_message(tr_ui("m_tz_err", self.L), ephemeral=True)
             return
         data["timezone"] = tz
         save_data()
         reconfigure_morning()
         reconfigure_goodnight()
         await refresh(self.parent_view)
-        await interaction.response.send_message(f"✅ Fuseau : **{tz}**", ephemeral=True)
+        await interaction.response.send_message(tr_ui("m_tz_ok", self.L, v=tz), ephemeral=True)
 
 
-class MorningModal(discord.ui.Modal, title="Heure du bonjour"):
+class MorningModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_morning_title", self.L))
         self.field = discord.ui.TextInput(
-            label="Heure (HH:MM, 24h)",
+            label=tr_ui("m_time_label", self.L),
             default=f"{data['morning_hour']:02d}:{data['morning_minute']:02d}", max_length=5)
         self.add_item(self.field)
 
@@ -1274,36 +1535,39 @@ class MorningModal(discord.ui.Modal, title="Heure du bonjour"):
             hh, mm = int(hh), int(mm)
             assert 0 <= hh <= 23 and 0 <= mm <= 59
         except Exception:
-            await interaction.response.send_message("❌ Format : HH:MM (ex : 08:30)", ephemeral=True)
+            await interaction.response.send_message(tr_ui("m_time_err", self.L), ephemeral=True)
             return
         data["morning_hour"], data["morning_minute"] = hh, mm
         save_data()
         reconfigure_morning()
         await refresh(self.parent_view)
-        await interaction.response.send_message(f"✅ Bonjour à **{hh:02d}:{mm:02d}**", ephemeral=True)
+        await interaction.response.send_message(
+            tr_ui("m_morning_ok", self.L, t=f"{hh:02d}:{mm:02d}"), ephemeral=True)
 
 
-class GoodnightModal(discord.ui.Modal, title="Message du soir"):
+class GoodnightModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_gn_title", self.L))
+        yes, no = tr_ui("yes_word", self.L), tr_ui("no_word", self.L)
         self.enabled = discord.ui.TextInput(
-            label="Activé ? (oui / non)",
-            default="oui" if data["goodnight_enabled"] else "non", max_length=4)
+            label=tr_ui("enabled_q", self.L, yes=yes, no=no),
+            default=yes if data["goodnight_enabled"] else no, max_length=8)
         self.timef = discord.ui.TextInput(
-            label="Heure (HH:MM)",
+            label=tr_ui("m_time_label2", self.L),
             default=f"{data['goodnight_hour']:02d}:{data['goodnight_minute']:02d}", max_length=5)
         self.add_item(self.enabled)
         self.add_item(self.timef)
 
     async def on_submit(self, interaction):
-        en = str(self.enabled.value).strip().lower() in ("oui", "o", "yes", "y", "on", "true", "1")
+        en = is_yes(self.enabled.value)
         try:
             hh, mm = str(self.timef.value).strip().split(":")
             hh, mm = int(hh), int(mm)
             assert 0 <= hh <= 23 and 0 <= mm <= 59
         except Exception:
-            await interaction.response.send_message("❌ Format heure : HH:MM", ephemeral=True)
+            await interaction.response.send_message(tr_ui("m_time_err2", self.L), ephemeral=True)
             return
         data["goodnight_enabled"], data["goodnight_hour"], data["goodnight_minute"] = en, hh, mm
         save_data()
@@ -1311,30 +1575,32 @@ class GoodnightModal(discord.ui.Modal, title="Message du soir"):
         if en and not goodnight_message.is_running():
             goodnight_message.start()
         await refresh(self.parent_view)
+        state = tr_ui("state_on" if en else "state_off", self.L)
         await interaction.response.send_message(
-            f"✅ Bonne nuit : {'activé' if en else 'désactivé'} à {hh:02d}:{mm:02d}", ephemeral=True)
+            tr_ui("m_gn_ok", self.L, state=state, t=f"{hh:02d}:{mm:02d}"), ephemeral=True)
 
 
-class SpontaneousModal(discord.ui.Modal, title="Messages spontanés"):
+class SpontaneousModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_sp_title", self.L))
+        yes, no = tr_ui("yes_word", self.L), tr_ui("no_word", self.L)
         self.enabled = discord.ui.TextInput(
-            label="Activés ? (oui / non)",
-            default="oui" if data["spontaneous_enabled"] else "non", max_length=4)
+            label=tr_ui("enabled_q", self.L, yes=yes, no=no),
+            default=yes if data["spontaneous_enabled"] else no, max_length=8)
         self.hours = discord.ui.TextInput(
-            label="Toutes les combien d'heures ?",
+            label=tr_ui("m_sp_hours_label", self.L),
             default=str(data["spontaneous_hours"]), max_length=2)
         self.add_item(self.enabled)
         self.add_item(self.hours)
 
     async def on_submit(self, interaction):
-        en = str(self.enabled.value).strip().lower() in ("oui", "o", "yes", "y", "on", "true", "1")
+        en = is_yes(self.enabled.value)
         try:
             hours = max(1, int(str(self.hours.value).strip()))
         except Exception:
-            await interaction.response.send_message("❌ Le nombre d'heures doit être un entier.",
-                                                    ephemeral=True)
+            await interaction.response.send_message(tr_ui("m_sp_hours_err", self.L), ephemeral=True)
             return
         data["spontaneous_enabled"], data["spontaneous_hours"] = en, hours
         save_data()
@@ -1342,34 +1608,38 @@ class SpontaneousModal(discord.ui.Modal, title="Messages spontanés"):
         if en and not spontaneous_message.is_running():
             spontaneous_message.start()
         await refresh(self.parent_view)
+        state = tr_ui("state_on" if en else "state_off", self.L)
         await interaction.response.send_message(
-            f"✅ Spontanés : {'activés' if en else 'désactivés'}, toutes les {hours}h", ephemeral=True)
+            tr_ui("m_sp_ok", self.L, state=state, h=hours), ephemeral=True)
 
 
-class ReactionsModal(discord.ui.Modal, title="Réactions aux mots-clés"):
+class ReactionsModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_rc_title", self.L))
+        yes, no = tr_ui("yes_word", self.L), tr_ui("no_word", self.L)
         self.field = discord.ui.TextInput(
-            label="Activées ? (oui / non)",
-            default="oui" if data["reactions_enabled"] else "non", max_length=4)
+            label=tr_ui("enabled_q", self.L, yes=yes, no=no),
+            default=yes if data["reactions_enabled"] else no, max_length=8)
         self.add_item(self.field)
 
     async def on_submit(self, interaction):
-        en = str(self.field.value).strip().lower() in ("oui", "o", "yes", "y", "on", "true", "1")
+        en = is_yes(self.field.value)
         data["reactions_enabled"] = en
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message(
-            f"✅ Réactions : {'activées' if en else 'désactivées'}", ephemeral=True)
+        state = tr_ui("state_on" if en else "state_off", self.L)
+        await interaction.response.send_message(tr_ui("m_rc_ok", self.L, state=state), ephemeral=True)
 
 
-class StartDateModal(discord.ui.Modal, title="Date de rencontre"):
+class StartDateModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_sd_title", self.L))
         self.field = discord.ui.TextInput(
-            label="Date (AAAA-MM-JJ), vide pour effacer",
+            label=tr_ui("m_sd_label", self.L),
             default=data.get("start_date") or "", required=False, max_length=10)
         self.add_item(self.field)
 
@@ -1381,28 +1651,28 @@ class StartDateModal(discord.ui.Modal, title="Date de rencontre"):
             try:
                 date.fromisoformat(raw)
             except Exception:
-                await interaction.response.send_message("❌ Format : AAAA-MM-JJ (ex : 2023-05-14)",
-                                                        ephemeral=True)
+                await interaction.response.send_message(tr_ui("m_sd_err", self.L), ephemeral=True)
                 return
             data["start_date"] = raw
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message("✅ Date enregistrée 💕", ephemeral=True)
+        await interaction.response.send_message(tr_ui("m_sd_ok", self.L), ephemeral=True)
 
 
-class ComplimentsModal(discord.ui.Modal, title="Compliments cachés"):
+class ComplimentsModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
-        self.c10 = discord.ui.TextInput(label="Débloqué à 10 ❤️",
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_cp_title", self.L))
+        self.c10 = discord.ui.TextInput(label=tr_ui("m_cp_label", self.L, n=10),
                                         style=discord.TextStyle.paragraph,
                                         default=data["compliments"].get("10", ""),
                                         required=False, max_length=300)
-        self.c25 = discord.ui.TextInput(label="Débloqué à 25 ❤️",
+        self.c25 = discord.ui.TextInput(label=tr_ui("m_cp_label", self.L, n=25),
                                         style=discord.TextStyle.paragraph,
                                         default=data["compliments"].get("25", ""),
                                         required=False, max_length=300)
-        self.c50 = discord.ui.TextInput(label="Débloqué à 50 ❤️",
+        self.c50 = discord.ui.TextInput(label=tr_ui("m_cp_label", self.L, n=50),
                                         style=discord.TextStyle.paragraph,
                                         default=data["compliments"].get("50", ""),
                                         required=False, max_length=300)
@@ -1415,16 +1685,17 @@ class ComplimentsModal(discord.ui.Modal, title="Compliments cachés"):
         data["compliments"]["50"] = str(self.c50.value)
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message("✅ Compliments enregistrés 💝", ephemeral=True)
+        await interaction.response.send_message(tr_ui("m_cp_ok", self.L), ephemeral=True)
 
 
-class AdminsModal(discord.ui.Modal, title="Gérer les admins"):
+class AdminsModal(discord.ui.Modal):
     def __init__(self, parent_view):
-        super().__init__()
         self.parent_view = parent_view
-        self.add_input = discord.ui.TextInput(label="Ajouter des IDs (virgules)",
+        self.L = getattr(parent_view, "vlang", lang())
+        super().__init__(title=tr_ui("m_ad_title", self.L))
+        self.add_input = discord.ui.TextInput(label=tr_ui("m_ad_add_label", self.L),
                                               required=False, default="")
-        self.remove_input = discord.ui.TextInput(label="Retirer des IDs (virgules)",
+        self.remove_input = discord.ui.TextInput(label=tr_ui("m_ad_remove_label", self.L),
                                                  required=False, default="")
         self.add_item(self.add_input)
         self.add_item(self.remove_input)
@@ -1442,7 +1713,7 @@ class AdminsModal(discord.ui.Modal, title="Gérer les admins"):
                 data["admins"].remove(uid)
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message("✅ Admins mis à jour 👤", ephemeral=True)
+        await interaction.response.send_message(tr_ui("m_ad_ok", self.L), ephemeral=True)
 
 
 # ---------- SOUS-MENUS (langue & salon) ----------
@@ -1462,11 +1733,12 @@ class LanguageSelect(discord.ui.Select):
         choice = self.values[0]
         if self.parent_view is not None:
             # ouvert depuis !config -> langue PAR DÉFAUT (messages programmés, partagée)
+            L = getattr(self.parent_view, "vlang", lang())
             data["language"] = choice
             save_data()
             await refresh(self.parent_view)
             await interaction.response.send_message(
-                f"✅ Langue par défaut : **{choice}**", ephemeral=True)
+                tr_ui("lang_default_ok", L, v=choice), ephemeral=True)
         else:
             # ouvert depuis !language -> langue PERSONNELLE de la personne qui clique
             set_user_language(interaction.user.id, choice)
@@ -1482,16 +1754,18 @@ class LanguageView(discord.ui.View):
 
 class ChannelSelectMenu(discord.ui.ChannelSelect):
     def __init__(self, parent_view):
+        L = getattr(parent_view, "vlang", lang())
         super().__init__(channel_types=[discord.ChannelType.text],
-                         placeholder="Choisis le salon où Pamuk parle")
+                         placeholder=tr_ui("channel_placeholder", L))
         self.parent_view = parent_view
+        self.L = L
 
     async def callback(self, interaction):
         ch = self.values[0]
         data["channel_id"] = ch.id
         save_data()
         await refresh(self.parent_view)
-        await interaction.response.send_message(f"✅ Salon : <#{ch.id}>", ephemeral=True)
+        await interaction.response.send_message(tr_ui("channel_ok", self.L, id=ch.id), ephemeral=True)
 
 
 class ChannelView(discord.ui.View):
@@ -1502,51 +1776,52 @@ class ChannelView(discord.ui.View):
 
 # ---------- MENU PRINCIPAL ----------
 class ConfigCategorySelect(discord.ui.Select):
-    def __init__(self, current="overview"):
-        options = [discord.SelectOption(label="Vue d'ensemble", value="overview",
+    def __init__(self, current, vlang):
+        options = [discord.SelectOption(label=tr_ui("cfg_overview_label", vlang), value="overview",
                                         emoji="🏠", default=(current == "overview"))]
         for cat in CONFIG_CATEGORIES:
             options.append(discord.SelectOption(
-                label=cat["label"], value=cat["id"], emoji=cat["emoji"],
-                description=cat["desc"], default=(current == cat["id"])))
-        super().__init__(placeholder="Catégorie de réglages...", options=options, row=0)
+                label=cat_label(cat["id"], vlang), value=cat["id"], emoji=cat["emoji"],
+                description=tr_ui(f"cat_{cat['id']}_desc", vlang), default=(current == cat["id"])))
+        super().__init__(placeholder=tr_ui("cfg_cat_placeholder", vlang), options=options, row=0)
 
     async def callback(self, interaction):
         cat = self.values[0]
         pv = self.view
-        new_view = ConfigView(pv.author_id, category=cat)
+        new_view = ConfigView(pv.author_id, category=cat, vlang=pv.vlang)
         new_view.message = pv.message
-        await interaction.response.edit_message(embed=build_config_embed(cat), view=new_view)
+        await interaction.response.edit_message(embed=build_config_embed(cat, pv.vlang), view=new_view)
 
 
 class ConfigItemSelect(discord.ui.Select):
-    def __init__(self, category):
+    def __init__(self, category, vlang):
         cat = next(c for c in CONFIG_CATEGORIES if c["id"] == category)
         options = []
         for item_id in cat["items"]:
-            label, emoji = CONFIG_ITEM_META[item_id]
-            options.append(discord.SelectOption(label=label, value=item_id, emoji=emoji))
-        super().__init__(placeholder="Choisis un réglage à modifier...", options=options, row=1)
+            options.append(discord.SelectOption(
+                label=item_label(item_id, vlang), value=item_id, emoji=CONFIG_ITEM_EMOJI[item_id]))
+        super().__init__(placeholder=tr_ui("cfg_item_placeholder", vlang), options=options, row=1)
 
     async def callback(self, interaction):
         await open_config_item(interaction, self.values[0], self.view)
 
 
 class ConfigView(discord.ui.View):
-    def __init__(self, author_id, category="overview"):
+    def __init__(self, author_id, category="overview", vlang=None):
         super().__init__(timeout=300)
         self.author_id = author_id
         self.category = category
+        self.vlang = vlang or lang()
         self.message = None
-        self.add_item(ConfigCategorySelect(category))
+        self.add_item(ConfigCategorySelect(category, self.vlang))
         if category != "overview":
-            self.add_item(ConfigItemSelect(category))
-        self.add_item(CloseButton(label="Fermer", row=2))
+            self.add_item(ConfigItemSelect(category, self.vlang))
+        self.add_item(CloseButton(label=tr_ui("close", self.vlang), row=2))
 
     async def interaction_check(self, interaction):
         if not is_admin(interaction.user.id):
             await interaction.response.send_message(
-                "⛔ Tu n'as pas la permission d'utiliser ce menu.", ephemeral=True)
+                ui("no_perm_menu", interaction.user.id), ephemeral=True)
             return False
         return True
 
@@ -1560,38 +1835,36 @@ class ConfigView(discord.ui.View):
 
 @bot.command(name="ghostping")
 async def ghostping_cmd(ctx, *, arg: str = ""):
+    L = ulang(ctx.author.id)
     if not is_admin(ctx.author.id):
-        await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
+        await ctx.send(tr_ui("no_perm_cmd", L))
         return
-    if arg.strip().lower() in ("off", "none", "désactiver", "disable", "stop"):
+    if arg.strip().lower() in ("off", "none", "désactiver", "disable", "stop", "kapat"):
         data["ghostping_channel_id"] = None
         save_data()
-        await ctx.send("👻 Ghost ping désactivé.")
+        await ctx.send(tr_ui("gp_off", L))
         return
     if ctx.message.channel_mentions:
         ch = ctx.message.channel_mentions[0]
         data["ghostping_channel_id"] = ch.id
         save_data()
-        await ctx.send(
-            f"👻 Ghost ping activé : chaque nouvel arrivant sera pingué dans {ch.mention}, "
-            "puis le ping sera supprimé aussitôt.\n`!ghostping off` pour désactiver.")
+        await ctx.send(tr_ui("gp_on", L, ch=ch.mention))
         return
     cid = data.get("ghostping_channel_id")
     if cid:
-        await ctx.send(f"👻 Salon actuel : <#{cid}>\n"
-                       "• `!ghostping #salon` pour changer\n"
-                       "• `!ghostping off` pour désactiver")
+        await ctx.send(tr_ui("gp_status", L, id=cid))
     else:
-        await ctx.send("👻 Aucun salon configuré.\nUtilise `!ghostping #salon` pour en définir un.")
+        await ctx.send(tr_ui("gp_none", L))
 
 
 @bot.command(name="config")
 async def config_cmd(ctx):
+    L = ulang(ctx.author.id)
     if not is_admin(ctx.author.id):
-        await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
+        await ctx.send(tr_ui("no_perm_cmd", L))
         return
-    view = ConfigView(ctx.author.id, category="overview")
-    msg = await ctx.send(embed=build_config_embed("overview"), view=view)
+    view = ConfigView(ctx.author.id, category="overview", vlang=L)
+    msg = await ctx.send(embed=build_config_embed("overview", L), view=view)
     view.message = msg
 
 # ==================================================================
