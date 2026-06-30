@@ -872,6 +872,171 @@ async def help_command(ctx):
     msg = await ctx.send(embed=build_help_embed("overview"), view=view)
     view.message = msg
 
+
+# ----- INTRO : embed de présentation postable par le bot (!intro) -----
+INTRO = {
+    "fr": {
+        "title": "🐱 Coucou, c'est Pamuk !",
+        "desc": "Je suis un petit chat virtuel qui vit ici 💛 Je dis bonjour le matin, "
+                "bonne nuit le soir, et j'adore quand on s'occupe de moi !",
+        "fields": [
+            ("🤗 Pour jouer avec moi",
+             "`!hug` câlin · `!pet` caresse · `!kiss` bisou · `!play` jouer · `!feed` nourrir"),
+            ("💫 Pour des douceurs", "`!compliment` · `!question` · `!goodnight`"),
+            ("💕 Nous deux",
+             "`!days` jours ensemble · `!streak` ta série · `!happiness` mon bonheur · `!pamuk` ma fiche"),
+            ("🌍 Réglages", "`!language` changer de langue · `!help` toutes les commandes"),
+        ],
+        "footer": "Plus tu t'occupes de moi, plus je débloque de petites surprises 🎁",
+    },
+    "tr": {
+        "title": "🐱 Selam, ben Pamuk!",
+        "desc": "Bu sunucuda yaşayan küçük sanal bir kediyim 💛 Sabah günaydın, akşam iyi geceler "
+                "derim ve benimle ilgilenmene bayılırım!",
+        "fields": [
+            ("🤗 Benimle oynamak için",
+             "`!hug` sarıl · `!pet` okşa · `!kiss` öp · `!play` oyna · `!feed` besle"),
+            ("💫 Tatlı şeyler", "`!compliment` · `!question` · `!goodnight`"),
+            ("💕 İkimiz",
+             "`!days` birlikte günler · `!streak` serin · `!happiness` mutluluğum · `!pamuk` kartım"),
+            ("🌍 Ayarlar", "`!language` dili değiştir · `!help` tüm komutlar"),
+        ],
+        "footer": "Benimle ne kadar ilgilenirsen, o kadar çok küçük sürpriz açılır 🎁",
+    },
+    "en": {
+        "title": "🐱 Hi, I'm Pamuk!",
+        "desc": "I'm a little virtual cat living here 💛 I say good morning, good night, "
+                "and I love when you take care of me!",
+        "fields": [
+            ("🤗 Play with me", "`!hug` · `!pet` · `!kiss` · `!play` · `!feed`"),
+            ("💫 Sweet stuff", "`!compliment` · `!question` · `!goodnight`"),
+            ("💕 Us", "`!days` · `!streak` · `!happiness` · `!pamuk`"),
+            ("🌍 Settings", "`!language` · `!help`"),
+        ],
+        "footer": "The more you care for me, the more little surprises unlock 🎁",
+    },
+}
+
+
+def build_intro_embed(language):
+    I = INTRO.get(language, INTRO["en"])
+    embed = discord.Embed(title=I["title"], description=I["desc"], color=0xF7B5CA)
+    for name, value in I["fields"]:
+        embed.add_field(name=name, value=value, inline=False)
+    embed.set_footer(text=I["footer"])
+    return apply_thumb(embed)
+
+
+LANG_LABELS = {"both": "Français + Türkçe", "fr": "Français", "tr": "Türkçe", "en": "English"}
+
+
+class IntroLanguageSelect(discord.ui.Select):
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Français + Türkçe", value="both", emoji="💞",
+                                 description="Les deux langues"),
+            discord.SelectOption(label="Français", value="fr", emoji="🇫🇷"),
+            discord.SelectOption(label="Türkçe", value="tr", emoji="🇹🇷"),
+            discord.SelectOption(label="English", value="en", emoji="🇬🇧"),
+        ]
+        super().__init__(placeholder="Étape 1 — choisis la langue...", options=options, row=0)
+
+    async def callback(self, interaction):
+        choice = self.values[0]
+        view = IntroChannelView(choice)
+        view.message = getattr(self.view, "message", None)
+        embed = discord.Embed(
+            title="📢 Où envoyer l'intro ?",
+            description=f"Langue : **{LANG_LABELS[choice]}**\n"
+                        "Étape 2 — choisis le salon dans le menu ci-dessous.",
+            color=0xF7B5CA)
+        await interaction.response.edit_message(embed=apply_thumb(embed), view=view)
+
+
+class IntroLanguageView(discord.ui.View):
+    def __init__(self, author_id):
+        super().__init__(timeout=180)
+        self.author_id = author_id
+        self.message = None
+        self.add_item(IntroLanguageSelect())
+        self.add_item(CloseButton(label="Fermer", row=1))
+
+    async def interaction_check(self, interaction):
+        if not is_admin(interaction.user.id):
+            await interaction.response.send_message(
+                "⛔ Tu n'as pas la permission.", ephemeral=True)
+            return False
+        return True
+
+    async def on_timeout(self):
+        if self.message:
+            try:
+                await self.message.edit(view=None)
+            except Exception:
+                pass
+
+
+class IntroChannelSelect(discord.ui.ChannelSelect):
+    def __init__(self, language):
+        super().__init__(channel_types=[discord.ChannelType.text],
+                         placeholder="Étape 2 — choisis le salon...", row=0)
+        self.language = language
+
+    async def callback(self, interaction):
+        picked = self.values[0]
+        channel = bot.get_channel(picked.id)
+        if channel is None and interaction.guild:
+            channel = interaction.guild.get_channel(picked.id)
+        if channel is None:
+            await interaction.response.send_message("❌ Salon introuvable.", ephemeral=True)
+            return
+        try:
+            if self.language == "both":
+                await channel.send(embeds=[build_intro_embed("fr"), build_intro_embed("tr")])
+            else:
+                await channel.send(embed=build_intro_embed(self.language))
+        except discord.Forbidden:
+            await interaction.response.send_message(
+                f"❌ Je n'ai pas la permission d'écrire dans <#{picked.id}>.", ephemeral=True)
+            return
+        except Exception as e:
+            await interaction.response.send_message(f"❌ Erreur : {e}", ephemeral=True)
+            return
+        done = discord.Embed(
+            title="✅ Intro envoyée !",
+            description=f"L'intro (**{LANG_LABELS[self.language]}**) a été postée dans <#{picked.id}> 💛",
+            color=0xF7B5CA)
+        await interaction.response.edit_message(embed=apply_thumb(done), view=None)
+
+
+class IntroChannelView(discord.ui.View):
+    def __init__(self, language):
+        super().__init__(timeout=180)
+        self.message = None
+        self.add_item(IntroChannelSelect(language))
+        self.add_item(CloseButton(label="Fermer", row=1))
+
+    async def interaction_check(self, interaction):
+        if not is_admin(interaction.user.id):
+            await interaction.response.send_message(
+                "⛔ Tu n'as pas la permission.", ephemeral=True)
+            return False
+        return True
+
+
+@bot.command(name="intro")
+async def intro_cmd(ctx):
+    if not is_admin(ctx.author.id):
+        await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
+        return
+    view = IntroLanguageView(ctx.author.id)
+    embed = discord.Embed(
+        title="🐱 Envoyer l'intro de Pamuk",
+        description="Étape 1 sur 2 — choisis la langue dans le menu ci-dessous.",
+        color=0xF7B5CA)
+    msg = await ctx.send(embed=apply_thumb(embed), view=view)
+    view.message = msg
+
 # ==================================================================
 #  PANNEAU DE CONFIGURATION  (!config)
 # ==================================================================
