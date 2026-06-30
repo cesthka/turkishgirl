@@ -439,6 +439,7 @@ DEFAULT_DATA = {
     "name": "Buğlem",
     "avatar_url": "",
     "language": DEFAULT_LANGUAGE,
+    "user_languages": {},
     "channel_id": None,
     "timezone": "Europe/Istanbul",
     "morning_hour": 8,
@@ -495,11 +496,24 @@ data = load_data()
 #  HELPERS
 # ==================================================================
 def lang():
+    # langue par défaut : messages programmés (matin, soir, spontanés) + secours
     return data.get("language", DEFAULT_LANGUAGE)
 
 
-def m(key):
-    return MESSAGES[lang()][key]
+def ulang(uid):
+    # langue personnelle d'un utilisateur (sinon langue par défaut)
+    if uid is None:
+        return lang()
+    return data.get("user_languages", {}).get(str(uid), lang())
+
+
+def set_user_language(uid, code):
+    data.setdefault("user_languages", {})[str(uid)] = code
+    save_data()
+
+
+def m(key, uid=None):
+    return MESSAGES[ulang(uid)][key]
 
 
 def fill(text):
@@ -673,7 +687,7 @@ async def maybe_comfort(message):
     if cid and message.channel.id != cid:
         return
     content = message.content.lower()
-    L = MESSAGES[lang()]
+    L = MESSAGES[ulang(message.author.id)]
     for kw in L.get("keywords_sad", []):
         if _has_keyword(content, kw):
             await message.channel.send(fill(random.choice(L["comfort_sad"])))
@@ -698,87 +712,91 @@ async def on_message(message):
 @bot.command(name="hug")
 async def hug(ctx):
     register_interaction()
-    await ctx.send(fill(random.choice(m("hugs"))))
+    await ctx.send(fill(random.choice(m("hugs", ctx.author.id))))
     await add_happiness(ctx.channel, 3)
 
 
 @bot.command(name="pet", aliases=["caresse"])
 async def pet(ctx):
     register_interaction()
-    await ctx.send(fill(random.choice(m("pet"))))
+    await ctx.send(fill(random.choice(m("pet", ctx.author.id))))
     await add_happiness(ctx.channel, 2)
 
 
 @bot.command(name="kiss", aliases=["bisou"])
 async def kiss(ctx):
     register_interaction()
-    await ctx.send(fill(random.choice(m("kiss"))))
+    await ctx.send(fill(random.choice(m("kiss", ctx.author.id))))
     await add_happiness(ctx.channel, 3)
 
 
 @bot.command(name="play", aliases=["jouer"])
 async def play(ctx):
     register_interaction()
-    await ctx.send(fill(random.choice(m("play"))))
+    await ctx.send(fill(random.choice(m("play", ctx.author.id))))
     await add_happiness(ctx.channel, 2)
 
 
 @bot.command(name="feed")
 async def feed(ctx):
     register_interaction()
-    await ctx.send(fill(random.choice(m("feed"))))
+    await ctx.send(fill(random.choice(m("feed", ctx.author.id))))
     await add_happiness(ctx.channel, 2)
 
 
 @bot.command(name="compliment")
 async def compliment_cmd(ctx):
-    await ctx.send(fill(random.choice(m("compliment"))))
+    await ctx.send(fill(random.choice(m("compliment", ctx.author.id))))
 
 
 @bot.command(name="question", aliases=["q"])
 async def question_cmd(ctx):
-    await ctx.send(fill(random.choice(m("question"))))
+    await ctx.send(fill(random.choice(m("question", ctx.author.id))))
 
 
 @bot.command(name="goodnight", aliases=["gn", "bonnenuit"])
 async def goodnight_cmd(ctx):
-    await ctx.send(fill(random.choice(m("goodnight"))))
+    await ctx.send(fill(random.choice(m("goodnight", ctx.author.id))))
 
 
 @bot.command(name="happiness")
 async def happiness(ctx):
+    uid = ctx.author.id
     h = data["happiness"]
-    face = m("happiness_low") if h < 10 else m("happiness_mid") if h < 30 else m("happiness_high")
-    await ctx.send(f"{fill(face)}\n({m('happiness_label')}: {h})")
+    face = m("happiness_low", uid) if h < 10 else m("happiness_mid", uid) if h < 30 else m("happiness_high", uid)
+    await ctx.send(f"{fill(face)}\n({m('happiness_label', uid)}: {h})")
 
 
 @bot.command(name="days", aliases=["together", "jours"])
 async def days_cmd(ctx):
+    uid = ctx.author.id
     d = days_together()
     if d is None:
-        await ctx.send(fill(m("days_none")))
+        await ctx.send(fill(m("days_none", uid)))
         return
     flair = " 🎉✨" if d > 0 and (d % 365 == 0 or d in (1, 7, 30, 50, 100, 200, 500, 1000)) else ""
-    await ctx.send(f"💕 {d} {m('days_label')}{flair}")
+    await ctx.send(f"💕 {d} {m('days_label', uid)}{flair}")
 
 
 @bot.command(name="streak")
 async def streak_cmd(ctx):
+    uid = ctx.author.id
     s = data.get("streak", 0)
     b = data.get("best_streak", 0)
-    await ctx.send(f"🔥 {s} {m('streak_label')} ({m('streak_record')}: {b})")
+    await ctx.send(f"🔥 {s} {m('streak_label', uid)} ({m('streak_record', uid)}: {b})")
 
 
 @bot.command(name="pamuk", aliases=["status"])
 async def status_cmd(ctx):
+    uid = ctx.author.id
     h = data["happiness"]
-    mood = m("happiness_low") if h < 10 else m("happiness_mid") if h < 30 else m("happiness_high")
+    mood = m("happiness_low", uid) if h < 10 else m("happiness_mid", uid) if h < 30 else m("happiness_high", uid)
     embed = discord.Embed(title="🐱 Pamuk", description=fill(mood), color=0xF7B5CA)
-    embed.add_field(name=m("happiness_label"), value=str(h), inline=True)
-    embed.add_field(name=m("streak_label"), value=str(data.get("streak", 0)), inline=True)
+    embed.add_field(name=m("happiness_label", uid), value=str(h), inline=True)
+    embed.add_field(name=m("streak_label", uid), value=str(data.get("streak", 0)), inline=True)
     d = days_together()
     if d is not None:
-        embed.add_field(name=m("days_label"), value=str(d), inline=True)
+        embed.add_field(name=m("days_label", uid), value=str(d), inline=True)
     await ctx.send(embed=apply_thumb(embed))
 
 
@@ -818,8 +836,8 @@ class CloseButton(discord.ui.Button):
             pass
 
 
-def build_help_embed(cat_id="overview"):
-    H = HELP[lang()]
+def build_help_embed(cat_id="overview", hlang=None):
+    H = HELP[hlang or lang()]
     if cat_id != "overview":
         for cat in H["categories"]:
             if cat["id"] == cat_id:
@@ -838,8 +856,9 @@ def build_help_embed(cat_id="overview"):
 
 
 class HelpSelect(discord.ui.Select):
-    def __init__(self):
-        H = HELP[lang()]
+    def __init__(self, hlang):
+        self.hlang = hlang
+        H = HELP[hlang]
         options = [discord.SelectOption(label=H["overview_label"], value="overview", emoji="🏠")]
         for cat in H["categories"]:
             options.append(discord.SelectOption(
@@ -848,15 +867,15 @@ class HelpSelect(discord.ui.Select):
 
     async def callback(self, interaction):
         await interaction.response.edit_message(
-            embed=build_help_embed(self.values[0]), view=self.view)
+            embed=build_help_embed(self.values[0], self.hlang), view=self.view)
 
 
 class HelpView(discord.ui.View):
-    def __init__(self):
+    def __init__(self, hlang):
         super().__init__(timeout=180)
         self.message = None
-        self.add_item(HelpSelect())
-        self.add_item(CloseButton())
+        self.add_item(HelpSelect(hlang))
+        self.add_item(CloseButton(label=CLOSE_LABEL.get(hlang, "Close")))
 
     async def on_timeout(self):
         if self.message:
@@ -868,8 +887,9 @@ class HelpView(discord.ui.View):
 
 @bot.command(name="help")
 async def help_command(ctx):
-    view = HelpView()
-    msg = await ctx.send(embed=build_help_embed("overview"), view=view)
+    hlang = ulang(ctx.author.id)
+    view = HelpView(hlang)
+    msg = await ctx.send(embed=build_help_embed("overview", hlang), view=view)
     view.message = msg
 
 
@@ -1057,7 +1077,7 @@ CONFIG_CATEGORIES = [
 
 CONFIG_ITEM_META = {
     "name":        ("Surnom", "🐱"),
-    "language":    ("Langue", "🌍"),
+    "language":    ("Langue par défaut", "🌍"),
     "channel":     ("Salon", "📢"),
     "timezone":    ("Fuseau horaire", "🕒"),
     "avatar":      ("Avatar (image)", "🖼️"),
@@ -1439,14 +1459,19 @@ class LanguageSelect(discord.ui.Select):
         )
 
     async def callback(self, interaction):
-        data["language"] = self.values[0]
-        save_data()
+        choice = self.values[0]
         if self.parent_view is not None:
+            # ouvert depuis !config -> langue PAR DÉFAUT (messages programmés, partagée)
+            data["language"] = choice
+            save_data()
             await refresh(self.parent_view)
-            await interaction.response.send_message(f"✅ Langue : **{data['language']}**",
-                                                    ephemeral=True)
+            await interaction.response.send_message(
+                f"✅ Langue par défaut : **{choice}**", ephemeral=True)
         else:
-            await interaction.response.send_message(fill(m("lang_changed")))
+            # ouvert depuis !language -> langue PERSONNELLE de la personne qui clique
+            set_user_language(interaction.user.id, choice)
+            await interaction.response.send_message(
+                fill(m("lang_changed", interaction.user.id)))
 
 
 class LanguageView(discord.ui.View):
