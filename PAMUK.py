@@ -47,7 +47,7 @@ from discord.ext import commands, tasks
 #  CONFIG EN DUR  (surchargée par variables d'env si présentes)
 # ==================================================================
 TOKEN = os.getenv("DISCORD_TOKEN", "PUT_YOUR_TOKEN_HERE")
-OWNER_ID = int(os.getenv("OWNER_ID", "123456789012345678"))
+OWNER_ID = int(os.getenv("OWNER_ID", "142365250803466240"))
 DEFAULT_LANGUAGE = "en"
 
 DATA_DIR = os.getenv("DATA_DIR", ".")
@@ -318,10 +318,126 @@ MESSAGES = {
 }
 
 # ==================================================================
+#  HELP  (catégories + commandes, multilingue) pour l'embed navigable
+# ==================================================================
+HELP = {
+    "en": {
+        "title": "🐱 Pamuk — Help",
+        "desc": "Everything we can do together 💛\nUse the menu below to explore a category.",
+        "overview_label": "Overview",
+        "placeholder": "Browse a category...",
+        "footer": "Use the menu to navigate 🐾",
+        "categories": [
+            {"id": "cuddles", "emoji": "🤗", "label": "Cuddles", "title": "🤗 Cuddles",
+             "desc": "hugs, kisses & more", "lines": [
+                "`!hug` — a big warm hug",
+                "`!pet` — pet me ✋",
+                "`!kiss` — a little kiss 😚",
+                "`!play` — play together 🧶",
+                "`!feed` — feed me 🍓",
+             ]},
+            {"id": "sweet", "emoji": "💫", "label": "Sweet stuff", "title": "💫 Sweet stuff",
+             "desc": "compliments & questions", "lines": [
+                "`!compliment` — a sweet compliment 💛",
+                "`!question` — a little couple question 💭",
+                "`!goodnight` — a goodnight message 🌙",
+             ]},
+            {"id": "us", "emoji": "💕", "label": "Us", "title": "💕 Us",
+             "desc": "our stats together", "lines": [
+                "`!days` — days we've been together 💕",
+                "`!streak` — your care streak 🔥",
+                "`!happiness` — how happy I am 💛",
+                "`!pamuk` — my little status card 🐾",
+             ]},
+            {"id": "settings", "emoji": "⚙️", "label": "Settings", "title": "⚙️ Settings",
+             "desc": "language & setup", "lines": [
+                "`!language` — change my language 🌍",
+                "`!help` — show this menu",
+                "`!config` — settings panel (owner/admins) 🔧",
+             ]},
+        ],
+    },
+    "fr": {
+        "title": "🐱 Pamuk — Aide",
+        "desc": "Tout ce qu'on peut faire ensemble 💛\nUtilise le menu ci-dessous pour explorer une catégorie.",
+        "overview_label": "Accueil",
+        "placeholder": "Parcourir une catégorie...",
+        "footer": "Utilise le menu pour naviguer 🐾",
+        "categories": [
+            {"id": "cuddles", "emoji": "🤗", "label": "Câlins", "title": "🤗 Câlins",
+             "desc": "câlins, bisous & plus", "lines": [
+                "`!hug` — un gros câlin tout chaud",
+                "`!pet` — caresse-moi ✋",
+                "`!kiss` — un petit bisou 😚",
+                "`!play` — on joue ensemble 🧶",
+                "`!feed` — nourris-moi 🍓",
+             ]},
+            {"id": "sweet", "emoji": "💫", "label": "Douceurs", "title": "💫 Douceurs",
+             "desc": "compliments & questions", "lines": [
+                "`!compliment` — un compliment tout doux 💛",
+                "`!question` — une petite question de couple 💭",
+                "`!goodnight` — un message du soir 🌙",
+             ]},
+            {"id": "us", "emoji": "💕", "label": "Nous", "title": "💕 Nous",
+             "desc": "nos stats à deux", "lines": [
+                "`!days` — nos jours ensemble 💕",
+                "`!streak` — ta série de jours 🔥",
+                "`!happiness` — mon niveau de bonheur 💛",
+                "`!pamuk` — ma petite carte de statut 🐾",
+             ]},
+            {"id": "settings", "emoji": "⚙️", "label": "Réglages", "title": "⚙️ Réglages",
+             "desc": "langue & configuration", "lines": [
+                "`!language` — change ma langue 🌍",
+                "`!help` — affiche ce menu",
+                "`!config` — panneau de réglages (owner/admins) 🔧",
+             ]},
+        ],
+    },
+    "tr": {
+        "title": "🐱 Pamuk — Yardım",
+        "desc": "Birlikte yapabileceğimiz her şey 💛\nBir kategoriyi keşfetmek için aşağıdaki menüyü kullan.",
+        "overview_label": "Genel",
+        "placeholder": "Bir kategoriye göz at...",
+        "footer": "Gezinmek için menüyü kullan 🐾",
+        "categories": [
+            {"id": "cuddles", "emoji": "🤗", "label": "Sevgi", "title": "🤗 Sevgi",
+             "desc": "sarılmalar, öpücükler & dahası", "lines": [
+                "`!hug` — kocaman sıcak bir sarılma",
+                "`!pet` — beni okşa ✋",
+                "`!kiss` — küçük bir öpücük 😚",
+                "`!play` — birlikte oynayalım 🧶",
+                "`!feed` — beni besle 🍓",
+             ]},
+            {"id": "sweet", "emoji": "💫", "label": "Tatlı şeyler", "title": "💫 Tatlı şeyler",
+             "desc": "iltifatlar & sorular", "lines": [
+                "`!compliment` — tatlı bir iltifat 💛",
+                "`!question` — küçük bir çift sorusu 💭",
+                "`!goodnight` — bir iyi geceler mesajı 🌙",
+             ]},
+            {"id": "us", "emoji": "💕", "label": "Biz", "title": "💕 Biz",
+             "desc": "birlikte istatistiklerimiz", "lines": [
+                "`!days` — birlikte geçirdiğimiz günler 💕",
+                "`!streak` — ilgi serin 🔥",
+                "`!happiness` — ne kadar mutluyum 💛",
+                "`!pamuk` — küçük durum kartım 🐾",
+             ]},
+            {"id": "settings", "emoji": "⚙️", "label": "Ayarlar", "title": "⚙️ Ayarlar",
+             "desc": "dil & kurulum", "lines": [
+                "`!language` — dilimi değiştir 🌍",
+                "`!help` — bu menüyü göster",
+                "`!config` — ayar paneli (owner/admins) 🔧",
+             ]},
+        ],
+    },
+}
+
+
+# ==================================================================
 #  DATA (sauvegardée en JSON)
 # ==================================================================
 DEFAULT_DATA = {
-    "name": "my love",
+    "name": "Buğlem",
+    "avatar_url": "",
     "language": DEFAULT_LANGUAGE,
     "channel_id": None,
     "timezone": "Europe/Istanbul",
@@ -645,7 +761,7 @@ async def status_cmd(ctx):
     d = days_together()
     if d is not None:
         embed.add_field(name=m("days_label"), value=str(d), inline=True)
-    await ctx.send(embed=embed)
+    await ctx.send(embed=apply_thumb(embed))
 
 
 @bot.command(name="language", aliases=["langue", "lang", "dil"])
@@ -656,54 +772,225 @@ async def set_language(ctx):
     )
 
 
+# ----- HELP : embed navigable avec menu déroulant -----
+CLOSE_LABEL = {"en": "Close", "fr": "Fermer", "tr": "Kapat"}
+
+
+def apply_thumb(embed):
+    """Ajoute la vignette de Pamuk à l'embed si un avatar est configuré."""
+    url = data.get("avatar_url")
+    if url:
+        try:
+            embed.set_thumbnail(url=url)
+        except Exception:
+            pass
+    return embed
+
+
+class CloseButton(discord.ui.Button):
+    def __init__(self, label=None, row=None):
+        super().__init__(label=label or CLOSE_LABEL.get(lang(), "Close"),
+                         style=discord.ButtonStyle.secondary, emoji="✖️", row=row)
+
+    async def callback(self, interaction):
+        await interaction.response.defer()
+        try:
+            await interaction.message.delete()
+        except Exception:
+            pass
+
+
+def build_help_embed(cat_id="overview"):
+    H = HELP[lang()]
+    if cat_id != "overview":
+        for cat in H["categories"]:
+            if cat["id"] == cat_id:
+                embed = discord.Embed(title=cat["title"],
+                                      description="\n".join(cat["lines"]),
+                                      color=0xF7B5CA)
+                embed.set_footer(text=H["footer"])
+                return apply_thumb(embed)
+    # vue d'ensemble : toutes les catégories
+    embed = discord.Embed(title=H["title"], description=H["desc"], color=0xF7B5CA)
+    for cat in H["categories"]:
+        embed.add_field(name=f"{cat['emoji']} {cat['label']}",
+                        value="\n".join(cat["lines"]), inline=False)
+    embed.set_footer(text=H["footer"])
+    return apply_thumb(embed)
+
+
+class HelpSelect(discord.ui.Select):
+    def __init__(self):
+        H = HELP[lang()]
+        options = [discord.SelectOption(label=H["overview_label"], value="overview", emoji="🏠")]
+        for cat in H["categories"]:
+            options.append(discord.SelectOption(
+                label=cat["label"], value=cat["id"], emoji=cat["emoji"], description=cat["desc"]))
+        super().__init__(placeholder=H["placeholder"], options=options)
+
+    async def callback(self, interaction):
+        await interaction.response.edit_message(
+            embed=build_help_embed(self.values[0]), view=self.view)
+
+
+class HelpView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=180)
+        self.message = None
+        self.add_item(HelpSelect())
+        self.add_item(CloseButton())
+
+    async def on_timeout(self):
+        if self.message:
+            try:
+                await self.message.edit(view=None)
+            except Exception:
+                pass
+
+
 @bot.command(name="help")
 async def help_command(ctx):
-    await ctx.send(fill(m("help")))
+    view = HelpView()
+    msg = await ctx.send(embed=build_help_embed("overview"), view=view)
+    view.message = msg
 
 # ==================================================================
 #  PANNEAU DE CONFIGURATION  (!config)
 # ==================================================================
-def build_config_embed():
-    ch = f"<#{data['channel_id']}>" if data.get("channel_id") else "❌ non défini"
-    sp = ("✅" if data["spontaneous_enabled"] else "❌") + f" (toutes les {data['spontaneous_hours']}h)"
-    gn = ("✅" if data["goodnight_enabled"] else "❌") + \
-         f" {data['goodnight_hour']:02d}:{data['goodnight_minute']:02d}"
-    rc = "✅" if data["reactions_enabled"] else "❌"
-    sd = data.get("start_date") or "—"
-    d = days_together()
-    if d is not None:
-        sd += f" ({d} j)"
-    admins = ", ".join(f"<@{a}>" for a in data.get("admins", [])) or "—"
+CONFIG_CATEGORIES = [
+    {"id": "messages", "emoji": "💬", "label": "Messages",
+     "desc": "matin, soir, spontanés, réactions",
+     "items": ["morning", "goodnight", "spontaneous", "reactions"]},
+    {"id": "perso", "emoji": "🎀", "label": "Personnalisation",
+     "desc": "surnom, langue, salon, fuseau, avatar",
+     "items": ["name", "language", "channel", "timezone", "avatar"]},
+    {"id": "couple", "emoji": "💕", "label": "Couple",
+     "desc": "date de rencontre, compliments",
+     "items": ["start_date", "compliments"]},
+    {"id": "admin", "emoji": "🔧", "label": "Admin",
+     "desc": "gérer les admins",
+     "items": ["admins"]},
+]
+
+CONFIG_ITEM_META = {
+    "name":        ("Surnom", "🐱"),
+    "language":    ("Langue", "🌍"),
+    "channel":     ("Salon", "📢"),
+    "timezone":    ("Fuseau horaire", "🕒"),
+    "avatar":      ("Avatar (image)", "🖼️"),
+    "morning":     ("Heure du bonjour", "⏰"),
+    "goodnight":   ("Message du soir", "🌙"),
+    "spontaneous": ("Messages spontanés", "💬"),
+    "reactions":   ("Réactions mots-clés", "🫂"),
+    "start_date":  ("Date de rencontre", "💕"),
+    "compliments": ("Compliments cachés", "💝"),
+    "admins":      ("Gérer les admins", "👤"),
+}
+
+
+def config_value(item_id):
+    if item_id == "name":
+        return data["name"]
+    if item_id == "language":
+        return data["language"]
+    if item_id == "channel":
+        return f"<#{data['channel_id']}>" if data.get("channel_id") else "❌ non défini"
+    if item_id == "timezone":
+        return data["timezone"]
+    if item_id == "avatar":
+        return "✅ défini" if data.get("avatar_url") else "—"
+    if item_id == "morning":
+        return f"{data['morning_hour']:02d}:{data['morning_minute']:02d}"
+    if item_id == "goodnight":
+        return ("✅" if data["goodnight_enabled"] else "❌") + \
+               f" {data['goodnight_hour']:02d}:{data['goodnight_minute']:02d}"
+    if item_id == "spontaneous":
+        return ("✅" if data["spontaneous_enabled"] else "❌") + \
+               f" (toutes les {data['spontaneous_hours']}h)"
+    if item_id == "reactions":
+        return "✅" if data["reactions_enabled"] else "❌"
+    if item_id == "start_date":
+        sd = data.get("start_date") or "—"
+        d = days_together()
+        return sd + (f" ({d} j)" if d is not None else "")
+    if item_id == "compliments":
+        return f"{len(data.get('compliments', {}))} messages"
+    if item_id == "admins":
+        return ", ".join(f"<@{a}>" for a in data.get("admins", [])) or "—"
+    return "—"
+
+
+def build_config_embed(category="overview"):
+    if category != "overview":
+        cat = next((c for c in CONFIG_CATEGORIES if c["id"] == category), None)
+        if cat:
+            embed = discord.Embed(
+                title=f"{cat['emoji']} Configuration — {cat['label']}",
+                description="Choisis un réglage à modifier dans le 2ᵉ menu ci-dessous.",
+                color=0xF7B5CA)
+            for item_id in cat["items"]:
+                label, emoji = CONFIG_ITEM_META[item_id]
+                embed.add_field(name=f"{emoji} {label}", value=config_value(item_id), inline=True)
+            embed.set_footer(text="Owner & admins uniquement")
+            return apply_thumb(embed)
+    # vue d'ensemble : toutes les catégories
     embed = discord.Embed(
         title="🐱 Pamuk — Configuration",
-        description="Choisis un réglage dans le menu ci-dessous.",
-        color=0xF7B5CA,
-    )
-    embed.add_field(name="Surnom", value=data["name"], inline=True)
-    embed.add_field(name="Langue", value=data["language"], inline=True)
-    embed.add_field(name="Salon", value=ch, inline=True)
-    embed.add_field(name="Bonjour",
-                    value=f"{data['morning_hour']:02d}:{data['morning_minute']:02d}", inline=True)
-    embed.add_field(name="Bonne nuit", value=gn, inline=True)
-    embed.add_field(name="Fuseau", value=data["timezone"], inline=True)
-    embed.add_field(name="Spontanés", value=sp, inline=True)
-    embed.add_field(name="Réactions", value=rc, inline=True)
-    embed.add_field(name="Date de rencontre", value=sd, inline=True)
-    embed.add_field(name="Admins supplémentaires", value=admins, inline=False)
+        description="Choisis une catégorie dans le menu ci-dessous.",
+        color=0xF7B5CA)
+    for cat in CONFIG_CATEGORIES:
+        lines = []
+        for item_id in cat["items"]:
+            label, emoji = CONFIG_ITEM_META[item_id]
+            lines.append(f"{emoji} {label} : **{config_value(item_id)}**")
+        embed.add_field(name=f"{cat['emoji']} {cat['label']}", value="\n".join(lines), inline=False)
     embed.set_footer(text="Owner & admins uniquement")
-    return embed
+    return apply_thumb(embed)
 
 
 async def refresh(view):
     msg = getattr(view, "message", None)
     if not msg:
         return
-    new_view = ConfigView(getattr(view, "author_id", OWNER_ID))
+    cat = getattr(view, "category", "overview")
+    new_view = ConfigView(getattr(view, "author_id", OWNER_ID), category=cat)
     new_view.message = msg
     try:
-        await msg.edit(embed=build_config_embed(), view=new_view)
+        await msg.edit(embed=build_config_embed(cat), view=new_view)
     except Exception as e:
         print("⚠️ refresh:", e)
+
+
+async def open_config_item(interaction, item_id, pv):
+    if item_id == "name":
+        await interaction.response.send_modal(NameModal(pv))
+    elif item_id == "avatar":
+        await interaction.response.send_modal(AvatarModal(pv))
+    elif item_id == "language":
+        await interaction.response.send_message("Choisis une langue :",
+                                                view=LanguageView(pv), ephemeral=True)
+    elif item_id == "channel":
+        await interaction.response.send_message("Choisis un salon :",
+                                                view=ChannelView(pv), ephemeral=True)
+    elif item_id == "morning":
+        await interaction.response.send_modal(MorningModal(pv))
+    elif item_id == "goodnight":
+        await interaction.response.send_modal(GoodnightModal(pv))
+    elif item_id == "timezone":
+        await interaction.response.send_modal(TimezoneModal(pv))
+    elif item_id == "spontaneous":
+        await interaction.response.send_modal(SpontaneousModal(pv))
+    elif item_id == "reactions":
+        await interaction.response.send_modal(ReactionsModal(pv))
+    elif item_id == "start_date":
+        await interaction.response.send_modal(StartDateModal(pv))
+    elif item_id == "compliments":
+        await interaction.response.send_modal(ComplimentsModal(pv))
+    elif item_id == "admins":
+        if interaction.user.id != OWNER_ID:
+            await interaction.response.send_message("⛔ Réservé à l'owner.", ephemeral=True)
+            return
+        await interaction.response.send_modal(AdminsModal(pv))
 
 
 # ---------- MODALS ----------
@@ -720,6 +1007,29 @@ class NameModal(discord.ui.Modal, title="Surnom de Pamuk"):
         save_data()
         await refresh(self.parent_view)
         await interaction.response.send_message(f"✅ Surnom : **{data['name']}**", ephemeral=True)
+
+
+class AvatarModal(discord.ui.Modal, title="Avatar de Pamuk"):
+    def __init__(self, parent_view):
+        super().__init__()
+        self.parent_view = parent_view
+        self.field = discord.ui.TextInput(
+            label="URL de l'image (vide pour retirer)",
+            placeholder="https://...png / .jpg / .gif",
+            default=data.get("avatar_url", ""), required=False, max_length=400)
+        self.add_item(self.field)
+
+    async def on_submit(self, interaction):
+        url = str(self.field.value).strip()
+        if url and not url.lower().startswith(("http://", "https://")):
+            await interaction.response.send_message(
+                "❌ L'URL doit commencer par http(s)://", ephemeral=True)
+            return
+        data["avatar_url"] = url
+        save_data()
+        await refresh(self.parent_view)
+        await interaction.response.send_message(
+            "✅ Avatar mis à jour 🖼️" if url else "✅ Avatar retiré", ephemeral=True)
 
 
 class TimezoneModal(discord.ui.Modal, title="Fuseau horaire"):
@@ -983,72 +1293,47 @@ class ChannelView(discord.ui.View):
 
 
 # ---------- MENU PRINCIPAL ----------
-class ConfigSelect(discord.ui.Select):
-    def __init__(self):
-        options = [
-            discord.SelectOption(label="Surnom", value="name", emoji="🐱",
-                                 description="Comment Pamuk l'appelle"),
-            discord.SelectOption(label="Langue", value="language", emoji="🌍",
-                                 description="en / fr / tr"),
-            discord.SelectOption(label="Salon", value="channel", emoji="📢",
-                                 description="Où Pamuk parle"),
-            discord.SelectOption(label="Heure du bonjour", value="morning", emoji="⏰",
-                                 description="Message du matin"),
-            discord.SelectOption(label="Message du soir", value="goodnight", emoji="🌙",
-                                 description="Bonne nuit"),
-            discord.SelectOption(label="Fuseau horaire", value="timezone", emoji="🕒",
-                                 description="ex : Europe/Istanbul"),
-            discord.SelectOption(label="Messages spontanés", value="spontaneous", emoji="💬",
-                                 description="Activer / fréquence"),
-            discord.SelectOption(label="Réactions mots-clés", value="reactions", emoji="🫂",
-                                 description="Réconfort auto"),
-            discord.SelectOption(label="Date de rencontre", value="start_date", emoji="💕",
-                                 description="Pour le compteur de jours"),
-            discord.SelectOption(label="Compliments cachés", value="compliments", emoji="💝",
-                                 description="Tes messages secrets"),
-            discord.SelectOption(label="Gérer les admins", value="admins", emoji="👤",
-                                 description="Owner uniquement"),
-        ]
-        super().__init__(placeholder="Que veux-tu configurer ?", options=options)
+class ConfigCategorySelect(discord.ui.Select):
+    def __init__(self, current="overview"):
+        options = [discord.SelectOption(label="Vue d'ensemble", value="overview",
+                                        emoji="🏠", default=(current == "overview"))]
+        for cat in CONFIG_CATEGORIES:
+            options.append(discord.SelectOption(
+                label=cat["label"], value=cat["id"], emoji=cat["emoji"],
+                description=cat["desc"], default=(current == cat["id"])))
+        super().__init__(placeholder="Catégorie de réglages...", options=options, row=0)
 
     async def callback(self, interaction):
-        v = self.values[0]
+        cat = self.values[0]
         pv = self.view
-        if v == "name":
-            await interaction.response.send_modal(NameModal(pv))
-        elif v == "language":
-            await interaction.response.send_message("Choisis une langue :",
-                                                    view=LanguageView(pv), ephemeral=True)
-        elif v == "channel":
-            await interaction.response.send_message("Choisis un salon :",
-                                                    view=ChannelView(pv), ephemeral=True)
-        elif v == "morning":
-            await interaction.response.send_modal(MorningModal(pv))
-        elif v == "goodnight":
-            await interaction.response.send_modal(GoodnightModal(pv))
-        elif v == "timezone":
-            await interaction.response.send_modal(TimezoneModal(pv))
-        elif v == "spontaneous":
-            await interaction.response.send_modal(SpontaneousModal(pv))
-        elif v == "reactions":
-            await interaction.response.send_modal(ReactionsModal(pv))
-        elif v == "start_date":
-            await interaction.response.send_modal(StartDateModal(pv))
-        elif v == "compliments":
-            await interaction.response.send_modal(ComplimentsModal(pv))
-        elif v == "admins":
-            if interaction.user.id != OWNER_ID:
-                await interaction.response.send_message("⛔ Réservé à l'owner.", ephemeral=True)
-                return
-            await interaction.response.send_modal(AdminsModal(pv))
+        new_view = ConfigView(pv.author_id, category=cat)
+        new_view.message = pv.message
+        await interaction.response.edit_message(embed=build_config_embed(cat), view=new_view)
+
+
+class ConfigItemSelect(discord.ui.Select):
+    def __init__(self, category):
+        cat = next(c for c in CONFIG_CATEGORIES if c["id"] == category)
+        options = []
+        for item_id in cat["items"]:
+            label, emoji = CONFIG_ITEM_META[item_id]
+            options.append(discord.SelectOption(label=label, value=item_id, emoji=emoji))
+        super().__init__(placeholder="Choisis un réglage à modifier...", options=options, row=1)
+
+    async def callback(self, interaction):
+        await open_config_item(interaction, self.values[0], self.view)
 
 
 class ConfigView(discord.ui.View):
-    def __init__(self, author_id):
+    def __init__(self, author_id, category="overview"):
         super().__init__(timeout=300)
         self.author_id = author_id
+        self.category = category
         self.message = None
-        self.add_item(ConfigSelect())
+        self.add_item(ConfigCategorySelect(category))
+        if category != "overview":
+            self.add_item(ConfigItemSelect(category))
+        self.add_item(CloseButton(label="Fermer", row=2))
 
     async def interaction_check(self, interaction):
         if not is_admin(interaction.user.id):
@@ -1070,8 +1355,8 @@ async def config_cmd(ctx):
     if not is_admin(ctx.author.id):
         await ctx.send("⛔ Tu n'as pas la permission d'utiliser cette commande.")
         return
-    view = ConfigView(ctx.author.id)
-    msg = await ctx.send(embed=build_config_embed(), view=view)
+    view = ConfigView(ctx.author.id, category="overview")
+    msg = await ctx.send(embed=build_config_embed("overview"), view=view)
     view.message = msg
 
 # ==================================================================
